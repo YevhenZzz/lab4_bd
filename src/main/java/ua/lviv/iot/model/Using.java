@@ -77,12 +77,11 @@ public class Using {
     private void print(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             System.out.print("{id: " + resultSet.getInt("id"));
-            System.out.print(", using_id: " + resultSet.getInt("using_id"));
-            System.out.print(", type_using: " + resultSet.getString("type_of_using"));
+            System.out.print(", name: " + resultSet.getString("name"));
+            System.out.print(", type_of_using: " + resultSet.getString("type_of_using"));
             System.out.print(", time: " + resultSet.getString("time"));
             System.out.print(", usingcol: " + resultSet.getString("usingcol"));
-            System.out.print(", contrainidation: " + resultSet.getBigDecimal("contrainidation"));
-            System.out.print(", birthday: " + resultSet.getDate("birthday"));
+            System.out.print(", contrainidation: " + resultSet.getString("contrainidation"));
             System.out.println("}");
         }
     }

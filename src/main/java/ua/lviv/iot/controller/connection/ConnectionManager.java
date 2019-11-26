@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static final String URL = "jdbc:mysql://localhost:3306/shutka" +
+    private static final String URL = "jdbc:mysql://localhost:3306/Database_lab3_Bufan" +
             "?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String USER = "ioter";
-    private static final String PASSWORD = "iotpassword";
+    private static final String USER = "root";
+    private static final String PASSWORD = "password";
     private static Connection connection = null;
 
     public static Connection getConnection() {

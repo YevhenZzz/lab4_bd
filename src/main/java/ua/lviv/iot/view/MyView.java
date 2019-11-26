@@ -118,7 +118,7 @@ public class MyView {
     }
 
     private void workWithChain() throws SQLException {
-        System.out.println("\tTable 'city'");
+        System.out.println("\tTable 'chain'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
@@ -165,7 +165,7 @@ public class MyView {
     }
 
     private void workWithCategory() throws SQLException {
-        System.out.println("\tTable 'client'");
+        System.out.println("\tTable 'category'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
@@ -212,7 +212,7 @@ public class MyView {
     }
 
     private void workWithManufacturer() throws SQLException {
-        System.out.println("\tTable 'courier'");
+        System.out.println("\tTable 'manufacturer'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
@@ -266,7 +266,7 @@ public class MyView {
     }
 
     private void workWithUsing() throws SQLException {
-        System.out.println("\tTable 'department'");
+        System.out.println("\tTable 'using'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
@@ -295,7 +295,7 @@ public class MyView {
             case "4":
                 System.out.print("Enter using id: ");
                 Integer using_id = new Scanner(System.in).nextInt();
-                System.out.print("Enter id: ");
+                System.out.print("Enter new id: ");
                 Integer xId = new Scanner(System.in).nextInt();
                 System.out.print("Enter new name: ");
                 String newName = new Scanner(System.in).nextLine();
@@ -321,7 +321,7 @@ public class MyView {
     }
 
     private void workWithComponents() throws SQLException {
-        System.out.println("\tTable 'department_type'");
+        System.out.println("\tTable 'components'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {

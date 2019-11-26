@@ -73,7 +73,6 @@ public class Chain {
     private void print(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             System.out.print("{id: " + resultSet.getInt("id"));
-            System.out.print(", chain_id: " + resultSet.getInt("chain_id"));
             System.out.print(", podorozhnik: " + resultSet.getString("podorozhnik"));
             System.out.print(", ze: " + resultSet.getString("ze"));
             System.out.print(", ds: " + resultSet.getString("ds"));

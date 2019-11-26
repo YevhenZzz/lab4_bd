@@ -78,8 +78,8 @@ public class Manufacturer {
             System.out.print("{id: " + resultSet.getInt("id"));
             System.out.print(", country: " + resultSet.getString("country"));
             System.out.print(", surname: " + resultSet.getString("type_of_drugs"));
-            System.out.print(", safety: " + resultSet.getBigDecimal("safety"));
-            System.out.print(", stock: " + resultSet.getBigDecimal("stock"));
+            System.out.print(", safety: " + resultSet.getString("safety"));
+            System.out.print(", stock: " + resultSet.getString("stock"));
             System.out.println("}");
         }
     }
