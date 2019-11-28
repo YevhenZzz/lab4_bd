@@ -73,7 +73,7 @@ public class Category {
             System.out.print("{id: " + resultSet.getInt("id"));
             System.out.print("{name: " + resultSet.getString("name"));
             System.out.print("{type: " + resultSet.getString("type"));
-            System.out.print("{quantity: " + resultSet.getString("quantity"));
+            System.out.print("quantity: " + resultSet.getString("quantity"));
             System.out.println("}");
         }
     }

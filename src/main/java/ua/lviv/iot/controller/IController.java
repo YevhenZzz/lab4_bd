@@ -8,11 +8,11 @@ public interface IController {
 
     void findPharmacyById(Integer id) throws SQLException;
 
-    void createPharmacy(Integer id, String username, String location, String popularity,String products,String chain) throws SQLException;
+    void createPharmacy(Integer id, String name, String location, String popularity,String products,String chain) throws SQLException;
 
     void deletePharmacy(Integer id) throws SQLException;
 
-    void updatePharmacy(Integer pharmacy_id, Integer id, String username, String location, String popularity,String products,String chain)
+    void updatePharmacy(Integer pharmacy_id, Integer id, String name, String location, String popularity,String products,String chain)
             throws SQLException;
 
      void findAllChain() throws SQLException;

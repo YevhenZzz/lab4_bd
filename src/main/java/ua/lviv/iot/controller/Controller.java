@@ -37,14 +37,14 @@ public class Controller implements IController {
     }
 
     @Override
-    public void createPharmacy(Integer id, String username, String location, String popularity, String products, String chain) throws SQLException {
-        pharmacy.create(id, username, location, popularity, products, chain);
+    public void createPharmacy(Integer id, String name, String location, String popularity, String products, String chain) throws SQLException {
+        pharmacy.create(id, name, location, popularity, products, chain);
     }
 
     @Override
-    public void updatePharmacy(Integer pharmacy_id, Integer id, String username, String location, String popularity,String products,String chain)
+    public void updatePharmacy(Integer pharmacy_id, Integer id, String name, String location, String popularity,String products,String chain)
             throws SQLException {
-        pharmacy.update(pharmacy_id,  id, username, location, popularity, products, chain);
+        pharmacy.update(pharmacy_id,  id, name, location, popularity, products, chain);
     }
 
     @Override

@@ -77,8 +77,8 @@ public class MyView {
             case "3":
                 System.out.print("Enter id: ");
                 Integer id = new Scanner(System.in).nextInt();
-                System.out.print("Enter username: ");
-                String username = new Scanner(System.in).nextLine();
+                System.out.print("Enter name: ");
+                String name = new Scanner(System.in).nextLine();
                 System.out.print("Enter location: ");
                 String location = new Scanner(System.in).nextLine();
                 System.out.print("Enter popularity: ");
@@ -87,15 +87,15 @@ public class MyView {
                 String products = new Scanner(System.in).nextLine();
                 System.out.print("Enter chain: ");
                 String chain = new Scanner(System.in).nextLine();
-                controller.createPharmacy(id, username, location, popularity, products, chain);
+                controller.createPharmacy(id, name, location, popularity, products, chain);
                 break;
             case "4":
                 System.out.print("Enter pharmacy id: ");
                 Integer pharmacy_id = new Scanner(System.in).nextInt();
                 System.out.print("Enter id: ");
                 Integer xId = new Scanner(System.in).nextInt();
-                System.out.print("Enter new username: ");
-                String newUsername = new Scanner(System.in).nextLine();
+                System.out.print("Enter new name: ");
+                String newName = new Scanner(System.in).nextLine();
                 System.out.print("Enter new location: ");
                 String newLocation = new Scanner(System.in).nextLine();
                 System.out.print("Enter new popularity: ");
@@ -104,7 +104,7 @@ public class MyView {
                 String newProducts = new Scanner(System.in).nextLine();
                 System.out.print("Enter new chain: ");
                 String newChain = new Scanner(System.in).nextLine();
-                controller.updatePharmacy(pharmacy_id, xId, newUsername, newLocation, newPopularity, newProducts, newChain);
+                controller.updatePharmacy(pharmacy_id, xId, newName, newLocation, newPopularity, newProducts, newChain);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -250,8 +250,6 @@ public class MyView {
                 String newSafety = new Scanner(System.in).nextLine();
                 System.out.print("Enter new stock: ");
                 String newStock = new Scanner(System.in).nextLine();
-                System.out.print("Enter new birthday: ");
-                Date newBirthday = new Date(System.currentTimeMillis()).valueOf(new Scanner(System.in).nextLine());
                 controller.updateManufacturer(manufacturer_id, xId, newCountry, newType_of_drugs, newSafety, newStock);
                 break;
             case "5":

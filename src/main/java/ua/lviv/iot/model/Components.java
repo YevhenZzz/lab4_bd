@@ -75,7 +75,6 @@ public class Components {
             System.out.print(", name: " + resultSet.getString("name"));
             System.out.print(", properties: " + resultSet.getString("properties"));
             System.out.print(", contents: " + resultSet.getString("contents"));
-            System.out.print(", address: " + resultSet.getString("address"));
             System.out.println("}");
         }
     }
