@@ -1,10 +1,8 @@
 package ua.lviv.iot.view;
 
 import ua.lviv.iot.controller.Controller;
+import ua.lviv.iot.model.*;
 
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class MyView {
@@ -12,11 +10,11 @@ public class MyView {
     private static String submenu =
             "\t1 - Find all\n\t2 - Find by id\n\t3 - Create\n\t4 - Update\n\t5 - Delete\n\tQ - Go back\n";
 
-    public MyView() throws SQLException {
+    public MyView() throws Exception {
         controller = new Controller();
     }
 
-    public void show() throws SQLException {
+    public void show() throws Exception {
         String menuPoint;
         do {
             System.out.println("Press ENTER key to continue...");
@@ -62,49 +60,52 @@ public class MyView {
                 "\tQ - Exit\n");
     }
 
-    private void workWithPharmacy() throws SQLException {
+    private void workWithPharmacy() throws Exception {
+        PharmacyEntity entity;
         System.out.println("\tTable 'Pharmacy'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllPharmacy();
+                for (PharmacyEntity pharmacy : controller.findAllPharmacy()) {
+                    System.out.println(pharmacy);
+                }
                 break;
             case "2":
                 System.out.print("Enter id: ");
-                controller.findPharmacyById(new Scanner(System.in).nextInt());
+                System.out.println(controller.findPharmacyById(new Scanner(System.in).nextInt()));
                 break;
             case "3":
+                entity = new PharmacyEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter name: ");
-                String name = new Scanner(System.in).nextLine();
+                entity.setName(new Scanner(System.in).nextLine());
                 System.out.print("Enter location: ");
-                String location = new Scanner(System.in).nextLine();
+                entity.setLocation(new Scanner(System.in).nextLine());
                 System.out.print("Enter popularity: ");
-                String popularity = new Scanner(System.in).nextLine();
+                entity.setPopularity(new Scanner(System.in).nextLine());
                 System.out.print("Enter products: ");
-                String products = new Scanner(System.in).nextLine();
+                entity.setProducts(new Scanner(System.in).nextLine());
                 System.out.print("Enter chain: ");
-                String chain = new Scanner(System.in).nextLine();
-                controller.createPharmacy(id, name, location, popularity, products, chain);
+                entity.setChain(new Scanner(System.in).nextLine());
+                controller.createPharmacy(entity);
                 break;
             case "4":
-                System.out.print("Enter pharmacy id: ");
-                Integer pharmacy_id = new Scanner(System.in).nextInt();
+                entity = new PharmacyEntity();
                 System.out.print("Enter id: ");
-                Integer xId = new Scanner(System.in).nextInt();
-                System.out.print("Enter new name: ");
-                String newName = new Scanner(System.in).nextLine();
-                System.out.print("Enter new location: ");
-                String newLocation = new Scanner(System.in).nextLine();
-                System.out.print("Enter new popularity: ");
-                String newPopularity = new Scanner(System.in).nextLine();
-                System.out.print("Enter new products: ");
-                String newProducts = new Scanner(System.in).nextLine();
-                System.out.print("Enter new chain: ");
-                String newChain = new Scanner(System.in).nextLine();
-                controller.updatePharmacy(pharmacy_id, xId, newName, newLocation, newPopularity, newProducts, newChain);
+                entity.setId(new Scanner(System.in).nextInt());
+                System.out.print("Enter name: ");
+                entity.setName(new Scanner(System.in).nextLine());
+                System.out.print("Enter location: ");
+                entity.setLocation(new Scanner(System.in).nextLine());
+                System.out.print("Enter popularity: ");
+                entity.setPopularity(new Scanner(System.in).nextLine());
+                System.out.print("Enter products: ");
+                entity.setProducts(new Scanner(System.in).nextLine());
+                System.out.print("Enter chain: ");
+                entity.setChain(new Scanner(System.in).nextLine());
+                controller.updatePharmacy(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -117,41 +118,45 @@ public class MyView {
         }
     }
 
-    private void workWithChain() throws SQLException {
+    private void workWithChain() throws Exception {
+        ChainEntity entity;
         System.out.println("\tTable 'chain'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllChain();
-                break;
-            case "2":
-                System.out.print("Enter id: ");
-                controller.findChainById(new Scanner(System.in).nextInt());
+                for (ChainEntity chain : controller.findAllChain()) {
+                    System.out.println(chain);
+                }
+                    break;
+                    case "2":
+                        System.out.print("Enter id: ");
+                        System.out.println(controller.findChainById(new Scanner(System.in).nextInt()));
+
                 break;
             case "3":
+                entity = new ChainEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter podorozhnik: ");
-                String podorozhnik = new Scanner(System.in).nextLine();
+                entity.setPodorozhnik(new Scanner(System.in).nextLine());
                 System.out.print("Enter ze: ");
-                String ze = new Scanner(System.in).nextLine();
+                entity.setZe(new Scanner(System.in).nextLine());
                 System.out.print("Enter ds: ");
-                String ds = new Scanner(System.in).nextLine();
-                controller.createChain(id, podorozhnik, ze, ds);
+                entity.setDs(new Scanner(System.in).nextLine());
+                controller.createChain(entity);
                 break;
             case "4":
-                System.out.print("Enter chain id: ");
-                Integer chain_id = new Scanner(System.in).nextInt();
+                entity = new ChainEntity();
                 System.out.print("Enter id: ");
-                Integer xid = new Scanner(System.in).nextInt();
-                System.out.print("Enter new podorozhnik: ");
-                String newPodorozhnik = new Scanner(System.in).nextLine();
-                System.out.print("Enter new ze: ");
-                String newZe = new Scanner(System.in).nextLine();
-                System.out.print("Enter new ds: ");
-                String newDs = new Scanner(System.in).nextLine();
-                controller.updateChain(chain_id, xid, newPodorozhnik, newZe, newDs);
+                entity.setId(new Scanner(System.in).nextInt());
+                System.out.print("Enter podorozhnik: ");
+                entity.setPodorozhnik(new Scanner(System.in).nextLine());
+                System.out.print("Enter ze: ");
+                entity.setZe(new Scanner(System.in).nextLine());
+                System.out.print("Enter ds: ");
+                entity.setDs(new Scanner(System.in).nextLine());
+                controller.updateChain(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -164,41 +169,45 @@ public class MyView {
         }
     }
 
-    private void workWithCategory() throws SQLException {
+    private void workWithCategory() throws Exception {
+        CategoryEntity entity;
         System.out.println("\tTable 'category'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllCategory();
+                for (CategoryEntity category : controller.findAllCategory()) {
+                    System.out.println(category);
+                }
                 break;
             case "2":
                 System.out.print("Enter id: ");
-                controller.findCategoryById(new Scanner(System.in).nextInt());
+                System.out.println(controller.findCategoryById(new Scanner(System.in).nextInt()));
                 break;
             case "3":
+                entity = new CategoryEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter name: ");
-                String name = new Scanner(System.in).nextLine();
+                entity.setName(new Scanner(System.in).nextLine());
                 System.out.print("Enter type: ");
-                String type = new Scanner(System.in).nextLine();
+                entity.setType(new Scanner(System.in).nextLine());
                 System.out.print("Enter quantity: ");
-                String quantity = new Scanner(System.in).nextLine();
-                controller.createCategory(id, name, type, quantity);
+                entity.setQuantity(new Scanner(System.in).nextLine());
+                controller.createCategory(entity);
                 break;
             case "4":
-                System.out.print("Enter category id: ");
-                Integer category_id = new Scanner(System.in).nextInt();
-                System.out.print("Enter new id: ");
-                Integer xId = new Scanner(System.in).nextInt();
-                System.out.print("Enter new surname: ");
-                String newName = new Scanner(System.in).nextLine();
-                System.out.print("Enter new phone: ");
-                String newType = new Scanner(System.in).nextLine();
-                System.out.print("Enter new address: ");
-                String newQuantity = new Scanner(System.in).nextLine();
-                controller.updateCategory(category_id, xId, newName, newType, newQuantity);
+
+                entity = new CategoryEntity();
+                System.out.print("Enter id: ");
+                entity.setId(new Scanner(System.in).nextInt());
+                System.out.print("Enter name: ");
+                entity.setName(new Scanner(System.in).nextLine());
+                System.out.print("Enter type: ");
+                entity.setType(new Scanner(System.in).nextLine());
+                System.out.print("Enter quantity: ");
+                entity.setQuantity(new Scanner(System.in).nextLine());
+                controller.updateCategory(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -211,46 +220,48 @@ public class MyView {
         }
     }
 
-    private void workWithManufacturer() throws SQLException {
+    private void workWithManufacturer() throws Exception {
+        ManufacturerEntity entity;
         System.out.println("\tTable 'manufacturer'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllManufacturer();
+                for (ManufacturerEntity manufacturer : controller.findAllManufacturer()) {
+                    System.out.println(manufacturer);
+                }
                 break;
             case "2":
                 System.out.print("Enter id: ");
-                controller.findManufacturerrById(new Scanner(System.in).nextInt());
+                System.out.println(controller.findManufacturerById(new Scanner(System.in).nextInt()));
                 break;
             case "3":
+                entity = new ManufacturerEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter country: ");
-                String country = new Scanner(System.in).nextLine();
+                entity.setCountry(new Scanner(System.in).nextLine());
                 System.out.print("Enter type_of_drugs: ");
-
-                String type_of_drugs = new Scanner(System.in).nextLine();
+                entity.setType_of_drugs(new Scanner(System.in).nextLine());
                 System.out.print("Enter safety: ");
-                String safety = new Scanner(System.in).nextLine();
+                entity.setSafety(new Scanner(System.in).nextLine());
                 System.out.print("Enter stock: ");
-                String stock = new Scanner(System.in).nextLine();
-                controller.createManufacturer(id, country, type_of_drugs, safety, stock);
+                entity.setStock(new Scanner(System.in).nextLine());
+                controller.createManufacturer(entity);
                 break;
             case "4":
-                System.out.print("Enter manufacturer id: ");
-                Integer manufacturer_id = new Scanner(System.in).nextInt();
-                System.out.print("Enter new id: ");
-                Integer xId = new Scanner(System.in).nextInt();
-                System.out.print("Enter new country: ");
-                String newCountry = new Scanner(System.in).nextLine();
-                System.out.print("Enter new type_of_drugs: ");
-                String newType_of_drugs = new Scanner(System.in).nextLine();
-                System.out.print("Enter new safety: ");
-                String newSafety = new Scanner(System.in).nextLine();
-                System.out.print("Enter new stock: ");
-                String newStock = new Scanner(System.in).nextLine();
-                controller.updateManufacturer(manufacturer_id, xId, newCountry, newType_of_drugs, newSafety, newStock);
+                entity = new ManufacturerEntity();
+                System.out.print("Enter id: ");
+                entity.setId(new Scanner(System.in).nextInt());
+                System.out.print("Enter country: ");
+                entity.setCountry(new Scanner(System.in).nextLine());
+                System.out.print("Enter type_of_drugs: ");
+                entity.setType_of_drugs(new Scanner(System.in).nextLine());
+                System.out.print("Enter safety: ");
+                entity.setSafety(new Scanner(System.in).nextLine());
+                System.out.print("Enter stock: ");
+                entity.setStock(new Scanner(System.in).nextLine());
+                controller.updateManufacturer(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -263,49 +274,52 @@ public class MyView {
         }
     }
 
-    private void workWithUsing() throws SQLException {
+    private void workWithUsing() throws Exception {
+        UsingEntity entity;
         System.out.println("\tTable 'using'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllUsing();
+                for (UsingEntity using : controller.findAllUsing()) {
+                    System.out.println(using);
+                }
                 break;
             case "2":
                 System.out.print("Enter id: ");
-                controller.findUsingById(new Scanner(System.in).nextInt());
+                System.out.println(controller.findManufacturerById(new Scanner(System.in).nextInt()));
                 break;
             case "3":
+                entity = new UsingEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter name: ");
-                String name = new Scanner(System.in).nextLine();
+                entity.setName(new Scanner(System.in).nextLine());
                 System.out.print("Enter type_of_using: ");
-                String type_of_using = new Scanner(System.in).nextLine();
+                entity.setType_of_using(new Scanner(System.in).nextLine());
                 System.out.print("Enter time: ");
-                String time = new Scanner(System.in).nextLine();
+                entity.setTime(new Scanner(System.in).nextLine());
                 System.out.print("Enter usingcol: ");
-                String usingcol = new Scanner(System.in).nextLine();
+                entity.setUsingcol(new Scanner(System.in).nextLine());
                 System.out.print("Enter contrainadation: ");
-                String contrainidation = new Scanner(System.in).nextLine();
-                controller.createUsing(id, name, type_of_using, time, usingcol, contrainidation);
+                entity.setContrainidation(new Scanner(System.in).nextLine());
+                controller.createUsing(entity);
                 break;
             case "4":
-                System.out.print("Enter using id: ");
-                Integer using_id = new Scanner(System.in).nextInt();
-                System.out.print("Enter new id: ");
-                Integer xId = new Scanner(System.in).nextInt();
-                System.out.print("Enter new name: ");
-                String newName = new Scanner(System.in).nextLine();
-                System.out.print("Enter new type_of_using: ");
-                String newType_of_using = new Scanner(System.in).nextLine();
-                System.out.print("Enter new time: ");
-                String newTime = new Scanner(System.in).nextLine();
-                System.out.print("Enter new usingcol: ");
-                String newUsingcol = new Scanner(System.in).nextLine();
-                System.out.print("Enter new contrainadation: ");
-                String newContrainidation = new Scanner(System.in).nextLine();
-                controller.updateUsing(using_id, xId, newName, newType_of_using, newTime, newUsingcol, newContrainidation);
+                entity = new UsingEntity();
+                System.out.print("Enter id: ");
+                entity.setId(new Scanner(System.in).nextInt());
+                System.out.print("Enter name: ");
+                entity.setName(new Scanner(System.in).nextLine());
+                System.out.print("Enter type_of_using: ");
+                entity.setType_of_using(new Scanner(System.in).nextLine());
+                System.out.print("Enter time: ");
+                entity.setTime(new Scanner(System.in).nextLine());
+                System.out.print("Enter usingcol: ");
+                entity.setUsingcol(new Scanner(System.in).nextLine());
+                System.out.print("Enter contrainadation: ");
+                entity.setContrainidation(new Scanner(System.in).nextLine());
+                controller.updateUsing(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");
@@ -318,41 +332,44 @@ public class MyView {
         }
     }
 
-    private void workWithComponents() throws SQLException {
+    private void workWithComponents() throws Exception {
+        ComponentsEntity entity;
         System.out.println("\tTable 'components'");
         System.out.println(submenu);
         System.out.print("Select point: ");
         switch (new Scanner(System.in).nextLine().toUpperCase()) {
             case "1":
-                controller.findAllComponents();
+                for (ComponentsEntity components : controller.findAllComponents()) {
+                    System.out.println(components);
+                }
                 break;
             case "2":
                 System.out.print("Enter id: ");
-                controller.findComponentsById(new Scanner(System.in).nextInt());
+                System.out.println(controller.findComponentsById(new Scanner(System.in).nextInt()));
                 break;
             case "3":
+                entity = new ComponentsEntity();
                 System.out.print("Enter id: ");
-                Integer id = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter name: ");
-                String name = new Scanner(System.in).nextLine();
+                entity.setName(new Scanner(System.in).nextLine());
                 System.out.print("Enter properties: ");
-                String properties = new Scanner(System.in).nextLine();
+                entity.setProperties(new Scanner(System.in).nextLine());
                 System.out.print("Enter contents: ");
-                String contents = new Scanner(System.in).nextLine();
-                controller.createComponents(id, name, properties, contents);
+                entity.setContents(new Scanner(System.in).nextLine());
+                controller.createComponents(entity);
                 break;
             case "4":
-                System.out.print("Enter components id: ");
-                Integer components_id = new Scanner(System.in).nextInt();
+                entity = new ComponentsEntity();
                 System.out.print("Enter id: ");
-                Integer xId = new Scanner(System.in).nextInt();
+                entity.setId(new Scanner(System.in).nextInt());
                 System.out.print("Enter name: ");
-                String newName = new Scanner(System.in).nextLine();
+                entity.setName(new Scanner(System.in).nextLine());
                 System.out.print("Enter properties: ");
-                String newProperties = new Scanner(System.in).nextLine();
+                entity.setProperties(new Scanner(System.in).nextLine());
                 System.out.print("Enter contents: ");
-                String newContents = new Scanner(System.in).nextLine();
-                controller.updateComponents(components_id, xId, newName, newProperties, newContents);
+                entity.setContents(new Scanner(System.in).nextLine());
+                controller.updateComponents(entity);
                 break;
             case "5":
                 System.out.print("Enter id: ");

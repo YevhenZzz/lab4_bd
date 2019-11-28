@@ -1,69 +1,74 @@
 package ua.lviv.iot.controller;
 
+import ua.lviv.iot.model.PharmacyEntity;
+import ua.lviv.iot.model.ChainEntity;
+import ua.lviv.iot.model.ManufacturerEntity;
+import ua.lviv.iot.model.ComponentsEntity;
+import ua.lviv.iot.model.CategoryEntity;
+import ua.lviv.iot.model.UsingEntity;
+
+
 import java.sql.SQLException;
+import java.util.List;
 
 public interface IController {
+    List<PharmacyEntity> findAllPharmacy() throws Exception;
 
-    void findAllPharmacy() throws SQLException;
+    PharmacyEntity findPharmacyById(Integer id) throws Exception;
 
-    void findPharmacyById(Integer id) throws SQLException;
+    void createPharmacy(PharmacyEntity entity) throws Exception;
 
-    void createPharmacy(Integer id, String name, String location, String popularity,String products,String chain) throws SQLException;
+    void updatePharmacy(PharmacyEntity entity) throws Exception;
 
-    void deletePharmacy(Integer id) throws SQLException;
+    void deletePharmacy(Integer id) throws Exception;
 
-    void updatePharmacy(Integer pharmacy_id, Integer id, String name, String location, String popularity,String products,String chain)
-            throws SQLException;
+    List<UsingEntity> findAllUsing() throws Exception;
 
-     void findAllChain() throws SQLException;
+    UsingEntity findUsingById(Integer id) throws Exception;
 
-     void findChainById(Integer id) throws SQLException;
+    void createUsing(UsingEntity entity) throws Exception;
 
-     void createChain(Integer id, String podorozhnik, String ze, String ds) throws SQLException;
+    void updateUsing(UsingEntity entity) throws Exception;
 
-     void updateChain(Integer chain_id, Integer id, String podorozhnik, String ze, String ds)
+    void deleteUsing(Integer id) throws Exception;
 
-            throws SQLException;
-     void deleteChain(Integer id) throws SQLException;
+    List<ManufacturerEntity> findAllManufacturer() throws Exception;
 
-     void findAllComponents() throws SQLException;
+    ManufacturerEntity findManufacturerById(Integer id) throws Exception;
 
-     void findComponentsById(Integer id) throws SQLException;
+    void createManufacturer(ManufacturerEntity entity) throws Exception;
 
-     void createComponents(Integer id, String name, String properties, String contents) throws SQLException;
+    void updateManufacturer(ManufacturerEntity entity) throws Exception;
 
-     void updateComponents(Integer components_id, Integer id, String name, String properties, String contents) throws SQLException;
+    void deleteManufacturer(Integer id) throws Exception;
 
-     void deleteComponents(Integer id) throws SQLException;
+    List<ChainEntity> findAllChain() throws Exception;
 
-     void findAllManufacturer() throws SQLException;
+    ChainEntity findChainById(Integer id) throws Exception;
 
-     void findManufacturerrById(Integer id) throws SQLException;
+    void createChain(ChainEntity entity) throws Exception;
 
-     void createManufacturer(Integer id, String  country, String type_of_drugs, String safety, String stock) throws SQLException;
+    void updateChain(ChainEntity entity) throws Exception;
 
-     void updateManufacturer(Integer manufacturer_id, Integer id, String  country, String type_of_drugs, String safety, String stock) throws SQLException;
+    void deleteChain(Integer id) throws Exception;
 
-     void deleteManufacturer(Integer id) throws SQLException;
+    List<ComponentsEntity> findAllComponents() throws Exception;
 
-     void findAllUsing() throws SQLException;
+    ComponentsEntity findComponentsById(Integer id) throws Exception;
 
-     void findUsingById(Integer id) throws SQLException;
+    void createComponents(ComponentsEntity entity) throws Exception;
 
-     void createUsing(Integer id, String name, String type_of_using, String time, String usingcol, String contrainidation) throws SQLException;
+    void updateComponents(ComponentsEntity entity) throws Exception;
 
-     void updateUsing(Integer using_id, Integer id, String name, String type_of_using, String time, String usingcol, String contrainidation) throws SQLException;
+    void deleteComponents(Integer id) throws Exception;
 
-     void deleteUsing(Integer id) throws SQLException;
+    List<CategoryEntity> findAllCategory() throws Exception;
 
-     void findAllCategory() throws SQLException;
+    CategoryEntity findCategoryById(Integer id) throws Exception;
 
-     void findCategoryById(Integer id) throws SQLException;
+    void createCategory(CategoryEntity entity) throws Exception;
 
-    void createCategory(Integer id, String name, String type, String quantity)
-            throws SQLException;
-    void updateCategory(Integer category_id, Integer id, String name, String type, String quantity) throws SQLException;
+    void updateCategory(CategoryEntity entity) throws Exception;
 
-    void deleteCategory(Integer id) throws SQLException;
-
+    void deleteCategory(Integer id) throws Exception;
 }
